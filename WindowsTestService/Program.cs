@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
+using TcpServerLib.IO;
+using TcpServerLib.IO.Net;
+using WindowsTestService.Properties;
 
 namespace WindowsTestService
 {
-    static class Program
+    public partial class Program
     {
+
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -20,6 +26,7 @@ namespace WindowsTestService
                 new Scheduler()
             };
             ServiceBase.Run(ServicesToRun);
+
         }
     }
 }

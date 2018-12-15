@@ -1,0 +1,559 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TRANSLOAD_TRANSFERModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TransferOrder">
+          <Key>
+            <PropertyRef Name="transferOrderId" />
+          </Key>
+          <Property Name="transferOrderId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="transferTypeId" Type="bigint" Nullable="false" />
+          <Property Name="siteId" Type="bigint" Nullable="false" />
+          <Property Name="transferSubTypeId" Type="bigint" />
+          <Property Name="customerId" Type="bigint" Nullable="false" />
+          <Property Name="productId" Type="bigint" Nullable="false" />
+          <Property Name="shipperId" Type="bigint" />
+          <Property Name="loaderId" Type="bigint" />
+          <Property Name="consigneeAreaId" Type="bigint" />
+          <Property Name="transferOrderLoaderId" Type="bigint" />
+          <Property Name="shipperOrderNumber" Type="varchar" MaxLength="30" />
+          <Property Name="scheduledDate" Type="datetime" />
+          <Property Name="orderedDate" Type="datetime" />
+          <Property Name="deliveryDate" Type="datetime" />
+          <Property Name="orderWeight" Type="numeric" Precision="19" Scale="8" />
+          <Property Name="weightUnitOfMeasureId" Type="bigint" />
+          <Property Name="orderVolume" Type="numeric" Precision="19" Scale="8" />
+          <Property Name="volumeUnitOfMeasureId" Type="bigint" />
+          <Property Name="consigneeId" Type="bigint" />
+          <Property Name="consigneeOrderNumber" Type="varchar" MaxLength="20" />
+          <Property Name="carrierId" Type="bigint" />
+          <Property Name="freightCharge" Type="varchar" MaxLength="50" />
+          <Property Name="poNumber" Type="varchar" MaxLength="50" />
+          <Property Name="workOrderComment" Type="varchar" MaxLength="1000" />
+          <Property Name="bolComment" Type="varchar" MaxLength="1000" />
+          <Property Name="scaleInDate" Type="datetime" />
+          <Property Name="scaleInWeight" Type="numeric" Precision="19" Scale="8" />
+          <Property Name="scaleOutDate" Type="datetime" />
+          <Property Name="departureEquipmentTypeId" Type="bigint" />
+          <Property Name="departureEquipmentName" Type="varchar" MaxLength="50" />
+          <Property Name="departureSealNumbers" Type="varchar" MaxLength="200" />
+          <Property Name="loadStartDate" Type="datetime" />
+          <Property Name="loadEndDate" Type="datetime" />
+          <Property Name="strength" Type="numeric" Precision="19" Scale="8" />
+          <Property Name="isCompleted" Type="bit" Nullable="false" />
+          <Property Name="isVoided" Type="bit" Nullable="false" />
+          <Property Name="inputDate" Type="datetime" Nullable="false" />
+          <Property Name="inputBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="modifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="billToId" Type="bigint" />
+          <Property Name="isValidated" Type="bit" />
+          <Property Name="productWeightUnitOfMeasureId" Type="bigint" />
+          <Property Name="interfaceDate" Type="datetime" />
+          <Property Name="status" Type="varchar" MaxLength="20" />
+          <Property Name="departureEquipmentId" Type="bigint" />
+          <Property Name="productAliasId" Type="bigint" />
+          <Property Name="processBy" Type="varchar" MaxLength="50" />
+          <Property Name="DriverName" Type="varchar" MaxLength="50" />
+          <Property Name="TruckLicensePlateNumber" Type="varchar" MaxLength="15" />
+          <Property Name="RackIdNumber" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TransferOrderArrival">
+          <Key>
+            <PropertyRef Name="transferOrderArrivalId" />
+          </Key>
+          <Property Name="transferOrderArrivalId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="transferOrderId" Type="bigint" Nullable="false" />
+          <Property Name="equipmentId" Type="bigint" Nullable="false" />
+          <Property Name="scaleInWeight" Type="numeric" Precision="19" Scale="8" />
+          <Property Name="scaleInDate" Type="datetime" />
+          <Property Name="scaleOutWeight" Type="numeric" Precision="19" Scale="8" />
+          <Property Name="scaleOutDate" Type="datetime" />
+          <Property Name="netTransferWeight" Type="numeric" Precision="19" Scale="8" />
+          <Property Name="loadedEmptyStatus" Type="varchar" MaxLength="10" />
+          <Property Name="isVoided" Type="bit" Nullable="false" />
+          <Property Name="inputDate" Type="datetime" Nullable="false" />
+          <Property Name="inputBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="modifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="interfaceDate" Type="datetime" />
+          <Property Name="scaleInVolume" Type="numeric" Precision="19" Scale="8" />
+          <Property Name="scaleOutVolume" Type="numeric" Precision="19" Scale="8" />
+          <Property Name="netTransferVolume" Type="numeric" Precision="19" Scale="8" />
+          <Property Name="NetVolume" Type="numeric" Precision="19" Scale="2" />
+          <Property Name="ObservedTemperature" Type="smallint" />
+          <Property Name="sequenceNumber" Type="int" />
+        </EntityType>
+        <EntityType Name="TransferOrderLoader">
+          <Key>
+            <PropertyRef Name="transferOrderLoaderId" />
+          </Key>
+          <Property Name="transferOrderLoaderId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="loaderName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="siteId" Type="bigint" Nullable="false" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+          <Property Name="inputDate" Type="datetime" Nullable="false" />
+          <Property Name="inputBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="modifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TransferOrderPlanning">
+          <Key>
+            <PropertyRef Name="transferOrderPlanningId" />
+          </Key>
+          <Property Name="transferOrderPlanningId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="transferOrderId" Type="bigint" />
+          <Property Name="equipmentTripId" Type="bigint" Nullable="false" />
+          <Property Name="productId" Type="bigint" Nullable="false" />
+          <Property Name="equipmentId" Type="bigint" Nullable="false" />
+          <Property Name="sequenceNumber" Type="int" />
+          <Property Name="planVolume" Type="numeric" Precision="19" Scale="8" />
+          <Property Name="planWeight" Type="numeric" Precision="19" Scale="8" />
+          <Property Name="sealNumber" Type="varchar" MaxLength="50" />
+          <Property Name="isSelected" Type="bit" Nullable="false" />
+          <Property Name="isVoided" Type="bit" Nullable="false" />
+          <Property Name="inputDate" Type="datetime" Nullable="false" />
+          <Property Name="inputBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="modifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="availableWeight" Type="numeric" Precision="19" Scale="8" />
+          <Property Name="availableVolume" Type="numeric" Precision="19" Scale="8" />
+          <Property Name="arrivalWeight" Type="numeric" Precision="19" Scale="8" />
+          <Property Name="arrivalVolume" Type="numeric" Precision="19" Scale="8" />
+        </EntityType>
+        <EntityType Name="TransferOrderService">
+          <Key>
+            <PropertyRef Name="transferOrderServiceId" />
+          </Key>
+          <Property Name="transferOrderServiceId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="transferOrderId" Type="bigint" Nullable="false" />
+          <Property Name="serviceId" Type="bigint" Nullable="false" />
+          <Property Name="uomId" Type="bigint" Nullable="false" />
+          <Property Name="activityDate" Type="datetime" Nullable="false" />
+          <Property Name="quantity" Type="numeric" Precision="19" Scale="8" Nullable="false" />
+          <Property Name="factor" Type="numeric" Precision="19" Scale="8" />
+          <Property Name="authorizedBy" Type="varchar" MaxLength="50" />
+          <Property Name="comment" Type="varchar" MaxLength="250" />
+          <Property Name="isVoided" Type="bit" Nullable="false" />
+          <Property Name="inputDate" Type="datetime" Nullable="false" />
+          <Property Name="inputBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="modifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="interfaceDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TransferSubType">
+          <Key>
+            <PropertyRef Name="transferSubTypeId" />
+          </Key>
+          <Property Name="transferSubTypeId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="transferTypeId" Type="bigint" Nullable="false" />
+          <Property Name="transferSubTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+          <Property Name="inputDate" Type="datetime" Nullable="false" />
+          <Property Name="inputBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="modifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TransferType">
+          <Key>
+            <PropertyRef Name="transferTypeId" />
+          </Key>
+          <Property Name="transferTypeId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="transferType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+          <Property Name="inputDate" Type="datetime" Nullable="false" />
+          <Property Name="inputBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="modifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="TRANSLOAD_TRANSFERModelStoreContainer">
+          <EntitySet Name="TransferOrder" EntityType="Self.TransferOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransferOrderArrival" EntityType="Self.TransferOrderArrival" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransferOrderLoader" EntityType="Self.TransferOrderLoader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransferOrderPlanning" EntityType="Self.TransferOrderPlanning" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransferOrderService" EntityType="Self.TransferOrderService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransferSubType" EntityType="Self.TransferSubType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransferType" EntityType="Self.TransferType" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TRANSLOAD_TRANSFERModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TransferOrder">
+          <Key>
+            <PropertyRef Name="transferOrderId" />
+          </Key>
+          <Property Name="transferOrderId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="transferTypeId" Type="Int64" Nullable="false" />
+          <Property Name="siteId" Type="Int64" Nullable="false" />
+          <Property Name="transferSubTypeId" Type="Int64" />
+          <Property Name="customerId" Type="Int64" Nullable="false" />
+          <Property Name="productId" Type="Int64" Nullable="false" />
+          <Property Name="shipperId" Type="Int64" />
+          <Property Name="loaderId" Type="Int64" />
+          <Property Name="consigneeAreaId" Type="Int64" />
+          <Property Name="transferOrderLoaderId" Type="Int64" />
+          <Property Name="shipperOrderNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="scheduledDate" Type="DateTime" Precision="3" />
+          <Property Name="orderedDate" Type="DateTime" Precision="3" />
+          <Property Name="deliveryDate" Type="DateTime" Precision="3" />
+          <Property Name="orderWeight" Type="Decimal" Precision="19" Scale="8" />
+          <Property Name="weightUnitOfMeasureId" Type="Int64" />
+          <Property Name="orderVolume" Type="Decimal" Precision="19" Scale="8" />
+          <Property Name="volumeUnitOfMeasureId" Type="Int64" />
+          <Property Name="consigneeId" Type="Int64" />
+          <Property Name="consigneeOrderNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="carrierId" Type="Int64" />
+          <Property Name="freightCharge" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="poNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="workOrderComment" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="bolComment" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="scaleInDate" Type="DateTime" Precision="3" />
+          <Property Name="scaleInWeight" Type="Decimal" Precision="19" Scale="8" />
+          <Property Name="scaleOutDate" Type="DateTime" Precision="3" />
+          <Property Name="departureEquipmentTypeId" Type="Int64" />
+          <Property Name="departureEquipmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="departureSealNumbers" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="loadStartDate" Type="DateTime" Precision="3" />
+          <Property Name="loadEndDate" Type="DateTime" Precision="3" />
+          <Property Name="strength" Type="Decimal" Precision="19" Scale="8" />
+          <Property Name="isCompleted" Type="Boolean" Nullable="false" />
+          <Property Name="isVoided" Type="Boolean" Nullable="false" />
+          <Property Name="inputDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="inputBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="billToId" Type="Int64" />
+          <Property Name="isValidated" Type="Boolean" />
+          <Property Name="productWeightUnitOfMeasureId" Type="Int64" />
+          <Property Name="interfaceDate" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="departureEquipmentId" Type="Int64" />
+          <Property Name="productAliasId" Type="Int64" />
+          <Property Name="processBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DriverName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TruckLicensePlateNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="RackIdNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TransferOrderArrival">
+          <Key>
+            <PropertyRef Name="transferOrderArrivalId" />
+          </Key>
+          <Property Name="transferOrderArrivalId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="transferOrderId" Type="Int64" Nullable="false" />
+          <Property Name="equipmentId" Type="Int64" Nullable="false" />
+          <Property Name="scaleInWeight" Type="Decimal" Precision="19" Scale="8" />
+          <Property Name="scaleInDate" Type="DateTime" Precision="3" />
+          <Property Name="scaleOutWeight" Type="Decimal" Precision="19" Scale="8" />
+          <Property Name="scaleOutDate" Type="DateTime" Precision="3" />
+          <Property Name="netTransferWeight" Type="Decimal" Precision="19" Scale="8" />
+          <Property Name="loadedEmptyStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="isVoided" Type="Boolean" Nullable="false" />
+          <Property Name="inputDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="inputBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="interfaceDate" Type="DateTime" Precision="3" />
+          <Property Name="scaleInVolume" Type="Decimal" Precision="19" Scale="8" />
+          <Property Name="scaleOutVolume" Type="Decimal" Precision="19" Scale="8" />
+          <Property Name="netTransferVolume" Type="Decimal" Precision="19" Scale="8" />
+          <Property Name="NetVolume" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="ObservedTemperature" Type="Int16" />
+          <Property Name="sequenceNumber" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TransferOrderLoader">
+          <Key>
+            <PropertyRef Name="transferOrderLoaderId" />
+          </Key>
+          <Property Name="transferOrderLoaderId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="loaderName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="siteId" Type="Int64" Nullable="false" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <Property Name="inputDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="inputBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TransferOrderPlanning">
+          <Key>
+            <PropertyRef Name="transferOrderPlanningId" />
+          </Key>
+          <Property Name="transferOrderPlanningId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="transferOrderId" Type="Int64" />
+          <Property Name="equipmentTripId" Type="Int64" Nullable="false" />
+          <Property Name="productId" Type="Int64" Nullable="false" />
+          <Property Name="equipmentId" Type="Int64" Nullable="false" />
+          <Property Name="sequenceNumber" Type="Int32" />
+          <Property Name="planVolume" Type="Decimal" Precision="19" Scale="8" />
+          <Property Name="planWeight" Type="Decimal" Precision="19" Scale="8" />
+          <Property Name="sealNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isSelected" Type="Boolean" Nullable="false" />
+          <Property Name="isVoided" Type="Boolean" Nullable="false" />
+          <Property Name="inputDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="inputBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="availableWeight" Type="Decimal" Precision="19" Scale="8" />
+          <Property Name="availableVolume" Type="Decimal" Precision="19" Scale="8" />
+          <Property Name="arrivalWeight" Type="Decimal" Precision="19" Scale="8" />
+          <Property Name="arrivalVolume" Type="Decimal" Precision="19" Scale="8" />
+        </EntityType>
+        <EntityType Name="TransferOrderService">
+          <Key>
+            <PropertyRef Name="transferOrderServiceId" />
+          </Key>
+          <Property Name="transferOrderServiceId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="transferOrderId" Type="Int64" Nullable="false" />
+          <Property Name="serviceId" Type="Int64" Nullable="false" />
+          <Property Name="uomId" Type="Int64" Nullable="false" />
+          <Property Name="activityDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="quantity" Type="Decimal" Precision="19" Scale="8" Nullable="false" />
+          <Property Name="factor" Type="Decimal" Precision="19" Scale="8" />
+          <Property Name="authorizedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="comment" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="isVoided" Type="Boolean" Nullable="false" />
+          <Property Name="inputDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="inputBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="interfaceDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TransferSubType">
+          <Key>
+            <PropertyRef Name="transferSubTypeId" />
+          </Key>
+          <Property Name="transferSubTypeId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="transferTypeId" Type="Int64" Nullable="false" />
+          <Property Name="transferSubTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <Property Name="inputDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="inputBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TransferType">
+          <Key>
+            <PropertyRef Name="transferTypeId" />
+          </Key>
+          <Property Name="transferTypeId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="transferType1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <Property Name="inputDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="inputBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="TransferContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TransferOrders" EntityType="Self.TransferOrder" />
+          <EntitySet Name="TransferOrderArrivals" EntityType="Self.TransferOrderArrival" />
+          <EntitySet Name="TransferOrderLoaders" EntityType="Self.TransferOrderLoader" />
+          <EntitySet Name="TransferOrderPlannings" EntityType="Self.TransferOrderPlanning" />
+          <EntitySet Name="TransferOrderServices" EntityType="Self.TransferOrderService" />
+          <EntitySet Name="TransferSubTypes" EntityType="Self.TransferSubType" />
+          <EntitySet Name="TransferTypes" EntityType="Self.TransferType" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TRANSLOAD_TRANSFERModelStoreContainer" CdmEntityContainer="TransferContext">
+          <EntitySetMapping Name="TransferOrders">
+            <EntityTypeMapping TypeName="TRANSLOAD_TRANSFERModel.TransferOrder">
+              <MappingFragment StoreEntitySet="TransferOrder">
+                <ScalarProperty Name="transferOrderId" ColumnName="transferOrderId" />
+                <ScalarProperty Name="transferTypeId" ColumnName="transferTypeId" />
+                <ScalarProperty Name="siteId" ColumnName="siteId" />
+                <ScalarProperty Name="transferSubTypeId" ColumnName="transferSubTypeId" />
+                <ScalarProperty Name="customerId" ColumnName="customerId" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="shipperId" ColumnName="shipperId" />
+                <ScalarProperty Name="loaderId" ColumnName="loaderId" />
+                <ScalarProperty Name="consigneeAreaId" ColumnName="consigneeAreaId" />
+                <ScalarProperty Name="transferOrderLoaderId" ColumnName="transferOrderLoaderId" />
+                <ScalarProperty Name="shipperOrderNumber" ColumnName="shipperOrderNumber" />
+                <ScalarProperty Name="scheduledDate" ColumnName="scheduledDate" />
+                <ScalarProperty Name="orderedDate" ColumnName="orderedDate" />
+                <ScalarProperty Name="deliveryDate" ColumnName="deliveryDate" />
+                <ScalarProperty Name="orderWeight" ColumnName="orderWeight" />
+                <ScalarProperty Name="weightUnitOfMeasureId" ColumnName="weightUnitOfMeasureId" />
+                <ScalarProperty Name="orderVolume" ColumnName="orderVolume" />
+                <ScalarProperty Name="volumeUnitOfMeasureId" ColumnName="volumeUnitOfMeasureId" />
+                <ScalarProperty Name="consigneeId" ColumnName="consigneeId" />
+                <ScalarProperty Name="consigneeOrderNumber" ColumnName="consigneeOrderNumber" />
+                <ScalarProperty Name="carrierId" ColumnName="carrierId" />
+                <ScalarProperty Name="freightCharge" ColumnName="freightCharge" />
+                <ScalarProperty Name="poNumber" ColumnName="poNumber" />
+                <ScalarProperty Name="workOrderComment" ColumnName="workOrderComment" />
+                <ScalarProperty Name="bolComment" ColumnName="bolComment" />
+                <ScalarProperty Name="scaleInDate" ColumnName="scaleInDate" />
+                <ScalarProperty Name="scaleInWeight" ColumnName="scaleInWeight" />
+                <ScalarProperty Name="scaleOutDate" ColumnName="scaleOutDate" />
+                <ScalarProperty Name="departureEquipmentTypeId" ColumnName="departureEquipmentTypeId" />
+                <ScalarProperty Name="departureEquipmentName" ColumnName="departureEquipmentName" />
+                <ScalarProperty Name="departureSealNumbers" ColumnName="departureSealNumbers" />
+                <ScalarProperty Name="loadStartDate" ColumnName="loadStartDate" />
+                <ScalarProperty Name="loadEndDate" ColumnName="loadEndDate" />
+                <ScalarProperty Name="strength" ColumnName="strength" />
+                <ScalarProperty Name="isCompleted" ColumnName="isCompleted" />
+                <ScalarProperty Name="isVoided" ColumnName="isVoided" />
+                <ScalarProperty Name="inputDate" ColumnName="inputDate" />
+                <ScalarProperty Name="inputBy" ColumnName="inputBy" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+                <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+                <ScalarProperty Name="billToId" ColumnName="billToId" />
+                <ScalarProperty Name="isValidated" ColumnName="isValidated" />
+                <ScalarProperty Name="productWeightUnitOfMeasureId" ColumnName="productWeightUnitOfMeasureId" />
+                <ScalarProperty Name="interfaceDate" ColumnName="interfaceDate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="departureEquipmentId" ColumnName="departureEquipmentId" />
+                <ScalarProperty Name="productAliasId" ColumnName="productAliasId" />
+                <ScalarProperty Name="processBy" ColumnName="processBy" />
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+                <ScalarProperty Name="TruckLicensePlateNumber" ColumnName="TruckLicensePlateNumber" />
+                <ScalarProperty Name="RackIdNumber" ColumnName="RackIdNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransferOrderArrivals">
+            <EntityTypeMapping TypeName="TRANSLOAD_TRANSFERModel.TransferOrderArrival">
+              <MappingFragment StoreEntitySet="TransferOrderArrival">
+                <ScalarProperty Name="transferOrderArrivalId" ColumnName="transferOrderArrivalId" />
+                <ScalarProperty Name="transferOrderId" ColumnName="transferOrderId" />
+                <ScalarProperty Name="equipmentId" ColumnName="equipmentId" />
+                <ScalarProperty Name="scaleInWeight" ColumnName="scaleInWeight" />
+                <ScalarProperty Name="scaleInDate" ColumnName="scaleInDate" />
+                <ScalarProperty Name="scaleOutWeight" ColumnName="scaleOutWeight" />
+                <ScalarProperty Name="scaleOutDate" ColumnName="scaleOutDate" />
+                <ScalarProperty Name="netTransferWeight" ColumnName="netTransferWeight" />
+                <ScalarProperty Name="loadedEmptyStatus" ColumnName="loadedEmptyStatus" />
+                <ScalarProperty Name="isVoided" ColumnName="isVoided" />
+                <ScalarProperty Name="inputDate" ColumnName="inputDate" />
+                <ScalarProperty Name="inputBy" ColumnName="inputBy" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+                <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+                <ScalarProperty Name="interfaceDate" ColumnName="interfaceDate" />
+                <ScalarProperty Name="scaleInVolume" ColumnName="scaleInVolume" />
+                <ScalarProperty Name="scaleOutVolume" ColumnName="scaleOutVolume" />
+                <ScalarProperty Name="netTransferVolume" ColumnName="netTransferVolume" />
+                <ScalarProperty Name="NetVolume" ColumnName="NetVolume" />
+                <ScalarProperty Name="ObservedTemperature" ColumnName="ObservedTemperature" />
+                <ScalarProperty Name="sequenceNumber" ColumnName="sequenceNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransferOrderLoaders">
+            <EntityTypeMapping TypeName="TRANSLOAD_TRANSFERModel.TransferOrderLoader">
+              <MappingFragment StoreEntitySet="TransferOrderLoader">
+                <ScalarProperty Name="transferOrderLoaderId" ColumnName="transferOrderLoaderId" />
+                <ScalarProperty Name="loaderName" ColumnName="loaderName" />
+                <ScalarProperty Name="siteId" ColumnName="siteId" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="inputDate" ColumnName="inputDate" />
+                <ScalarProperty Name="inputBy" ColumnName="inputBy" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+                <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransferOrderPlannings">
+            <EntityTypeMapping TypeName="TRANSLOAD_TRANSFERModel.TransferOrderPlanning">
+              <MappingFragment StoreEntitySet="TransferOrderPlanning">
+                <ScalarProperty Name="transferOrderPlanningId" ColumnName="transferOrderPlanningId" />
+                <ScalarProperty Name="transferOrderId" ColumnName="transferOrderId" />
+                <ScalarProperty Name="equipmentTripId" ColumnName="equipmentTripId" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="equipmentId" ColumnName="equipmentId" />
+                <ScalarProperty Name="sequenceNumber" ColumnName="sequenceNumber" />
+                <ScalarProperty Name="planVolume" ColumnName="planVolume" />
+                <ScalarProperty Name="planWeight" ColumnName="planWeight" />
+                <ScalarProperty Name="sealNumber" ColumnName="sealNumber" />
+                <ScalarProperty Name="isSelected" ColumnName="isSelected" />
+                <ScalarProperty Name="isVoided" ColumnName="isVoided" />
+                <ScalarProperty Name="inputDate" ColumnName="inputDate" />
+                <ScalarProperty Name="inputBy" ColumnName="inputBy" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+                <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+                <ScalarProperty Name="availableWeight" ColumnName="availableWeight" />
+                <ScalarProperty Name="availableVolume" ColumnName="availableVolume" />
+                <ScalarProperty Name="arrivalWeight" ColumnName="arrivalWeight" />
+                <ScalarProperty Name="arrivalVolume" ColumnName="arrivalVolume" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransferOrderServices">
+            <EntityTypeMapping TypeName="TRANSLOAD_TRANSFERModel.TransferOrderService">
+              <MappingFragment StoreEntitySet="TransferOrderService">
+                <ScalarProperty Name="transferOrderServiceId" ColumnName="transferOrderServiceId" />
+                <ScalarProperty Name="transferOrderId" ColumnName="transferOrderId" />
+                <ScalarProperty Name="serviceId" ColumnName="serviceId" />
+                <ScalarProperty Name="uomId" ColumnName="uomId" />
+                <ScalarProperty Name="activityDate" ColumnName="activityDate" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="factor" ColumnName="factor" />
+                <ScalarProperty Name="authorizedBy" ColumnName="authorizedBy" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="isVoided" ColumnName="isVoided" />
+                <ScalarProperty Name="inputDate" ColumnName="inputDate" />
+                <ScalarProperty Name="inputBy" ColumnName="inputBy" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+                <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+                <ScalarProperty Name="interfaceDate" ColumnName="interfaceDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransferSubTypes">
+            <EntityTypeMapping TypeName="TRANSLOAD_TRANSFERModel.TransferSubType">
+              <MappingFragment StoreEntitySet="TransferSubType">
+                <ScalarProperty Name="transferSubTypeId" ColumnName="transferSubTypeId" />
+                <ScalarProperty Name="transferTypeId" ColumnName="transferTypeId" />
+                <ScalarProperty Name="transferSubTypeName" ColumnName="transferSubTypeName" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="inputDate" ColumnName="inputDate" />
+                <ScalarProperty Name="inputBy" ColumnName="inputBy" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+                <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransferTypes">
+            <EntityTypeMapping TypeName="TRANSLOAD_TRANSFERModel.TransferType">
+              <MappingFragment StoreEntitySet="TransferType">
+                <ScalarProperty Name="transferTypeId" ColumnName="transferTypeId" />
+                <ScalarProperty Name="transferType1" ColumnName="transferType" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="inputDate" ColumnName="inputDate" />
+                <ScalarProperty Name="inputBy" ColumnName="inputBy" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+                <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -7,7 +7,7 @@ using System.IO;
 
 namespace WindowsTestService
 {
-    public static class Library
+    public static class Log
     {
         public static void WriteErrorLog(Exception ex)
         {
